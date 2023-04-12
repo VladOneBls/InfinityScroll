@@ -6,7 +6,7 @@ let photosArray = [];
 
 // Unsplash API
 const count = 10;
-const apiKey = 'API_KEY_FROM_secret.txt';
+const apiKey = 'API_KEY_FROM_/EXTRAS';
 const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`;
 
 
@@ -54,6 +54,15 @@ async function getPhotos() {
         // Catch error here
     }
 }
+
+
+// Check if Scrolling is near Bottom of Page => Load more Photos
+window.addEventListener('scroll', () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000) {
+        getPhotos();
+        console.log('Load more Photos');
+    }
+});
 
 
 // On Load
