@@ -8,9 +8,9 @@ let photosArray = [];
 
 
 // Unsplash API
-const count = 30;
+let imageCount = 5;
 const apiKey = 'API_KEY_FROM_/Dev_Extra';
-const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`;
+let apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`;
 
 
 // Check if all images were loaded
@@ -19,6 +19,10 @@ function imageLoaded() {
     if (imagesLoaded === totalImages) {
         ready = true;
         loader.hidden = true; // show loader spinner only on the first fetch
+
+        // Changing the imageCount (5->30) and updating the apiUrl in order to fetch 5 photos first and then the rest, in case our users have slow internet connection
+        imageCount = 30;
+        apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`;
     }
 }
 
